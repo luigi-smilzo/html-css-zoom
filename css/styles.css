@@ -18,6 +18,7 @@ body {
   height: 100vh;
 }
 
+/* Top bar */
 #top-bar {
   width: 100%;
   padding: 12px 0 24px;
@@ -34,8 +35,10 @@ body {
   transform: translateY(3px)
 }
 
+/* Cams */
 #cams {
   flex-grow: 1;
+  margin-bottom: 15px;
   width: 1600px;
   max-width: 100%;
   display: flex;
@@ -44,16 +47,97 @@ body {
 }
 
 #cams .user {
+  position: relative;
   flex-basis: 25%;
-  background: #000;
-  border: 2px solid white;
+  background: #333;
+  border: 3px solid #000;
+  transition: border .4s;
 }
 
-img {
-  display: none;
+#cams .user:hover {
+  border-color: rgba(255,255,255,.75)
 }
 
-#bottom-bar {
+#cams .user.active {
+  border-color: lightgreen;
+}
+
+#cams .user img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  background: linear-gradient(#444, #666);
+  height: 100%;
+  object-fit: cover;
+}
+
+#cams .user .name, 
+#cams .user i {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+  padding: 2px 4px;
+  font-size: 12px;
+  opacity: 0;
+}
+
+#cams .user.active .name,
+#cams .user:not(.active) i {
+  opacity: 1;
+}
+
+#cams .user.non-participant {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#cams .user.non-participant span:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+/* Bottom bar */
+#bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 15px 5px;
+  background: linear-gradient(#444, #111);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#bottom-bar ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#bottom-bar ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 25px;
+}
+#bottom-bar ul li i {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+#bottom-bar ul li span {
+  font-size: 12px;
+}
+
+#bottom-bar .leave a {
+  text-decoration: none;
+  color: red;
+  font-size: 14px;
+  font-weight: 700;
 }
